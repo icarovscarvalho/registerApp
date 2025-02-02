@@ -1,0 +1,86 @@
+:root {
+  --border: #fff;
+  --primary: #363467;
+  --second: #1e1d4fcc;
+  --button: #8B8CEB;
+}
+
+.mainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-grow: 1;
+
+  padding: 20px;
+  background: url("../../assets/background.jpg");
+  background-position: center center;
+  background-size: cover;
+
+  
+}
+
+.createdCard {
+  display: flex;
+  gap: 20px;
+
+  background-color: tomato;
+  padding: 10px 20px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 400px;
+
+  background-color: var(--second);
+  color: var(--border);
+  border-radius: 2px;
+}
+
+.datas {
+  flex: 1;
+  cursor: default;
+}
+
+.btnsField{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  font-size: 1.5rem;
+  background-color: #1e1d4f00;
+  border: none;
+  color: #cf280e;
+  cursor: pointer;
+
+  &:hover {
+    color: #e67260;
+  }
+}
+
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  font-size: 1.5rem;
+  background-color: #1e1d4f00;
+  border: none;
+  color: #26aa14;
+  cursor: pointer;
+
+  &:hover {
+    color: #61bd55;
+  }
+}

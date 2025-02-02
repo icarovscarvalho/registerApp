@@ -1,0 +1,49 @@
+:root {
+  --bg: #ffffff54;
+  --border: #fff;
+  --primary: #363467;
+  --second: #1e1d4fcc;
+  --button: #8B8CEB;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px 10px;
+}
+
+.field{
+  padding: 3px 20px;
+
+  background-color: inherit;
+  border: 1px solid var(--button);
+  border-radius: 25px;
+  color: var(--border);
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.field:hover{
+  background-color: var(--button);
+}
+
+.btn{
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 3px 20px;
+  width: 150px;
+  
+  background-color: var(--button);
+  border: none;
+  border-radius: 25px;
+  color: var(--border);
+  outline: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:active{
+  background-color: var(--second);
+}

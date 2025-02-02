@@ -1,0 +1,53 @@
+:root{
+  --border: #fff;
+  --primary: #363467;
+  --second: #1e1d4fcc;
+}
+
+.footerContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-top: 1px solid #fff;
+  box-shadow: 0 -3px 5px #ffffff59;
+  color: #fff;
+
+  padding: 10px;
+  height: 70px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  cursor: default;
+
+  &>:nth-child(2) {
+    color: rgb(212, 212, 174);
+  }
+}
+
+.navFooter{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 1.2rem;
+}
+
+.navFooterBtn{
+  display: flex;
+  align-items: center;
+
+  font-size: 2rem;
+  transition: all.5s ease-in;
+  cursor: pointer;
+  
+  &:hover{
+    transform: translateY(-5px);
+    transition: all.5s ease-in;
+  }
+}
