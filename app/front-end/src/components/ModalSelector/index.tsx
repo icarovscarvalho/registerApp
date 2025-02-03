@@ -1,41 +1,32 @@
 import { useRef } from "react"
-import api from "../../services/api"
 import style from "./style.module.css"
 
 interface ModalSelectorProps{
-  getUsers: ()=>void
+  getUser: (id:string)=>Promise<{
+    name: string
+    age: string
+    email: string
+  }>
   closeModal: ()=>void
+  id: string
 }
 
-export function ModalSelector({getUsers, closeModal}:ModalSelectorProps) {
+// export function ModalSelector({getUser, closeModal, id}:ModalSelectorProps) {
+export function ModalSelector({getUser, closeModal, id}:ModalSelectorProps) {
 
-  const inputName = useRef<HTMLInputElement | null>(null)
-  const inputAge = useRef<HTMLInputElement | null>(null)
-  const inputEmail = useRef<HTMLInputElement | null>(null)
+  const inputName = useRef<HTMLInputElement | string | null>(null)
+  const inputAge = useRef<HTMLInputElement | string | null>(null)
+  const inputEmail = useRef<HTMLInputElement | string | null>(null)
 
-  async function createUser() {
-    const nameLength = inputName.current?.value.length ?? 0
-    const ageLength = inputAge.current?.value.length ?? 0
-    const emailLength = inputEmail.current?.value.length ?? 0;
+  getUser(id).then((res)=>{
+    inputName.current = res.name
+    inputAge.current = res.age
+    inputEmail.current = res.email
+  })
 
-
-    if(nameLength<2 || ageLength<1 || emailLength<11){
-      alert("We Need enter with datas in all fields")
-      return
-    } else {
-      await api.put('/users', {
-        name: inputName.current?.value,
-        age: inputAge.current?.value,
-        email: inputEmail.current?.value
-      })
-      alert("Usuário created with success")
-      window.location.reload()
-    }
-  }
-
-  function editedUser() {
-    createUser()
-    getUsers()
+  async function editedUser() {
+    // createUser()
+    // getUser()
     closeModal()
   }
 

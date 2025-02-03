@@ -26,6 +26,21 @@ app.get('/users', async (req, res)=>{
   res.status(200).json(users)
 })
 
+app.get('/user/:id', async (req, res)=>{
+
+  let user = null
+
+  if(req.query){
+    user = await prisma.user.findUnique({
+      where: {
+        id: req.params.id
+      }
+    })
+  }
+
+  res.status(200).json(user)
+})
+
 app.post('/users', async (req, res) => {
   await prisma.user.create({
     data: {
@@ -38,17 +53,23 @@ app.post('/users', async (req, res) => {
   res.status(201).json(req.body)
 })
 
-app.put('/users/:id', async (req, res)=>{
+app.put('/user/:id', async (req, res)=>{
+
+  const {name, age, email} = req.body
+  console.log(name, age, email)
+
   await prisma.user.update({
     where: {
       id: req.params.id
     },
     data: {
-      email: req.body.email,
-      name: req.body.name,
-      age: req.body.age
+      email: email,
+      name: name,
+      age: age,
     }
   })
+
+  res.status(200).json({message: "user updated with success"})
 })
 
 app.delete('/users/:id', async (req, res)=>{

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import api from "../../services/api"
 
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
@@ -10,6 +10,8 @@ export function Register(){
   let [users, setUsers] = useState<any[]>([])
   let [modal, setModal] = useState<boolean>(false)
   
+  const selectedUserID = useRef<string | null>(null) 
+  
   async function getUsers() {
     try{
       const usersFromApi = await api.get('/users')
@@ -19,14 +21,25 @@ export function Register(){
     }
   }
 
-  async function deleteUser(id:any) {
+  async function deleteUser(id:string) {
     await api.delete(`/users/${id}`)
     getUsers()
   }
 
+  async function getUser(id:string) {
+    const response = await api.get(`/user/${id}`)
+    return response.data
+  }
+
+  async function changeUserData(id:string, data:{name:string, age: string, email:string}) {
+    await api.put(`/user/${id}`, data)
+  }
+
   useEffect(()=>{
-    getUsers()
-  },[])
+    if(!modal) {
+      getUsers()
+    }
+  },[modal])
 
   console.log(modal)
   function openModal() {
@@ -44,7 +57,10 @@ export function Register(){
             <p>Email: {user.email}</p>
           </div>
           <div className={style.btnsField}>
-            <button className={style.edit} onClick={openModal} >
+            <button className={style.edit} onClick={()=>{
+              selectedUserID.current = user.id
+              openModal()
+            }} >
               <FaEdit />
             </button>
             <button className={style.trash} onClick={()=>deleteUser(user.id)} >
@@ -53,7 +69,7 @@ export function Register(){
           </div>
         </div>
       ))}
-      {modal === true ? <Modal modal={setModal} getUsers={getUsers} /> : ''}
+      {modal === true ? <Modal modal={setModal} getUser={getUser} changeUserData={changeUserData} id={selectedUserID.current}  /> : ''}
     </main>
   )
 }
