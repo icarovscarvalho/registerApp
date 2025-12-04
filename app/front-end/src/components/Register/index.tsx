@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import api from "../../services/api"
 
+import { Modal } from "../Modal";
+
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
 import style from "./style.module.css"
-import { Modal } from "../Modal";
 
 export function Register(){
   
