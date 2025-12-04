@@ -2,7 +2,7 @@ BarryMeeting – Cadastro de Usuários
 
 Este é um projeto simples desenvolvido com React, Node.js e MongoDB, criado para demonstrar o fluxo básico de cadastro de usuários em uma aplicação fullstack moderna.
 
-![Tela do Projeto](./public/assets/screen.jpg)  
+![Tela do Projeto](./screen.jpg)  
 
 A interface apresenta um design limpo e colorido, com foco na experiência do usuário, permitindo cadastrar nome, idade e email de forma rápida e intuitiva.
 
